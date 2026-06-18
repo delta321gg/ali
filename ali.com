@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali'soneexxompany | Cyber Hub</title>
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --secondary: #ff007f;
+            --bg-dark: #0a0a12;
+            --panel-bg: rgba(16, 16, 30, 0.65);
+            --text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 240, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(255, 0, 127, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Header & Nav */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 18, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary);
+        }
+
+        /* Main Container */
+        main {
+            margin-top: 100px;
+            padding: 20px 5%;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 3s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #8a99ad;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Glassmorphism Cards/Panels */
+        .grid-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .panel:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .panel h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Registration Form */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            color: #8a99ad;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+        }
+
+        select.form-control option {
+            background: var(--bg-dark);
+            color: #fff;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, var(--primary), #00a8ff);
+            border: none;
+            border-radius: 8px;
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px var(--primary);
+            transform: scale(1.02);
+        }
+
+        /* Custom Feedback Alert */
+        .alert {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: none;
+            text-align: center;
+        }
+        .alert-success {
+            background: rgba(0, 255, 128, 0.15);
+            color: #00ff80;
+            border: 1px solid #00ff80;
+        }
+
+        /* Dashboards Section */
+        .dashboard-title {
+            text-align: center;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Dynamic Backgrounds for Dashboards */
+        .db-panel {
+            background-size: cover;
+            background-position: center;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Neon cyber backgrounds using CSS gradients */
+        .db-1 {
+            background-image: linear-gradient(135deg, rgba(10, 10, 18, 0.9) 30%, rgba(255, 0, 127, 0.2)), url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=400&auto=format&fit=crop');
+        }
+        .db-2 {
+            background-image: linear-gradient(135deg, rgba(10, 10, 18, 0.9) 30%, rgba(0, 240, 255, 0.2)), url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=400&auto=format&fit=crop');
+        }
+        .db-3 {
+            background-image: linear-gradient(135deg, rgba(10, 10, 18, 0.9) 30%, rgba(157, 0, 255, 0.2)), url('https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?q=80&w=400&auto=format&fit=crop');
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        .stat-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .stat-progress {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 40px 5%;
+            text-align: center;
+            background: rgba(5, 5, 10, 0.8);
+        }
+
+        .credits {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #65758c;
+        }
+
+        .credits span {
+            color: var(--secondary);
+            font-weight: 700;
+            text-shadow: 0 0 8px var(--secondary);
+            font-family: monospace;
+        }
+
+        @keyframes pulse {
+            from { text-shadow: 0 0 10px rgba(0, 240, 255, 0.2); }
+            to { text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 30px rgba(255, 0, 127, 0.4); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            nav { margin-top: 5px; }
+            nav a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Ali's<span>oneexxompany</span></div>
+        <nav>
+            <a href="#register">Nexus Portal</a>
+            <a href="#dashboards">Core Systems</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Ali'soneexxompany</h1>
+            <p>Welcome to the next paradigm of computational dominance and system engineering. Initialize your sequence.</p>
+        </section>
+
+        <section class="grid-section" id="register">
+            <div class="panel" style="grid-column: span 1;">
+                <h2><span>//</span> Course Application Portal</h2>
+                <form id="regForm">
+                    <div class="form-group">
+                        <label for="name">Operator Identity (Name)</label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Comms Channel (Email)</label>
+                        <input type="email" id="email" class="form-control" placeholder="name@domain.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Quantum Matrix Selection</label>
+                        <select id="course" class="form-control" required>
+                            <option value="" disabled selected>Choose your specialization...</option>
+                            <option value="Advanced Cyber Intelligence">Specialization 01: Advanced Cyber Intelligence</option>
+                            <option value="Neural Cloud Architecture">Specialization 02: Neural Cloud Architecture</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Initialize Vector</button>
+                </form>
+                <div class="alert alert-success" id="successAlert">
+                    ✔ Sequence Accepted. Demo data initialized successfully.
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2><span>//</span> System Status</h2>
+                <p style="color: #8a99ad; line-height: 1.6; margin-bottom: 15px;">
+                    This interface provides frontend validation configurations mapping directly to simulated local terminal matrices. No remote SQL injection protocols or DB connections are loaded in this revision layer.
+                </p>
+                <code style="color: var(--primary); font-family: monospace; display: block; background: rgba(0,0,0,0.4); padding: 10px; border-radius: 6px; border-left: 3px solid var(--primary);">
+                    STATUS: ONLINE<br>
+                    DATABASE_LINK: MOCK_MODE_ACTIVE<br>
+                    TARGET_HOST: VERCEL_EDGE_NODES
+                </code>
+            </div>
+        </section>
+
+        <h2 class="dashboard-title" id="dashboards">System Metrics Overviews</h2>
+
+        <section class="dashboard-grid">
+            <div class="panel db-panel db-1">
+                <div>
+                    <h3 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; color: var(--secondary);">System Grid Alpha</h3>
+                    <div class="stat-value" id="cpuVal">94.2%</div>
+                </div>
+                <div>
+                    <p style="font-size: 0.8rem; color: #fff; text-shadow: 0 1px 3px #000;">Neural Processing Load</p>
+                    <div class="stat-bar"><div class="stat-progress" style="width: 94%; background: var(--secondary);"></div></div>
+                </div>
+            </div>
+
+            <div class="panel db-panel db-2">
+                <div>
+                    <h3 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; color: var(--primary);">Data Core Beta</h3>
+                    <div class="stat-value" id="bandVal">1,024 GB/s</div>
+                </div>
+                <div>
+                    <p style="font-size: 0.8rem; color: #fff; text-shadow: 0 1px 3px #000;">Quantum Transmissions</p>
+                    <div class="stat-bar"><div class="stat-progress" style="width: 78%; background: var(--primary);"></div></div>
+                </div>
+            </div>
+
+            <div class="panel db-panel db-3">
+                <div>
+                    <h3 style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; color: #b300ff;">Proxy Node Gamma</h3>
+                    <div class="stat-value">Active</div>
+                </div>
+                <div>
+                    <p style="font-size: 0.8rem; color: #fff; text-shadow: 0 1px 3px #000;">Global Node Integrity: 99.8%</p>
+                    <div class="stat-bar"><div class="stat-progress" style="width: 99%; background: #b300ff;"></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="credits">DEVELOPED BY <span>hhaacckk.developers</span> &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Handle local simulation for registration
+        document.getElementById('regForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const course = document.getElementById('course').value;
+            const alertBox = document.getElementById('successAlert');
+            
+            alertBox.innerText = `✔ Transmitting Protocol: ${name} registered for ${course} [SIMULATION COMPLETED]`;
+            alertBox.style.display = 'block';
+            
+            this.reset();
+            
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+            }, 6000);
+        });
+
+        // Add small random variations to the dashboard numbers to make it look active
+        setInterval(() => {
+            const cpu = (90 + Math.random() * 8).toFixed(1);
+            document.getElementById('cpuVal').innerText = cpu + '%';
+            
+            const bandwidth = Math.floor(950 + Math.random() * 100);
+            document.getElementById('bandVal').innerText = bandwidth.toLocaleString() + ' GB/s';
+        }, 2500);
+    </script>
+</body>
+</html>
